@@ -1,4 +1,5 @@
 (ns slacktor-beam.core
+  (:gen-class)
   (require [clj-slack.users :as users]
            [clj-slack.channels :as channels]
            [clojure.tools.logging :as log]
