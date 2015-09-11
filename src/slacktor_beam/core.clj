@@ -14,8 +14,6 @@
 (def members (atom #{}))
 (def monitoring-users (atom false))
 
-#_(println "found new users: " (difference current @members))
-
 (defn monitor-users! []
   (reset! monitoring-users true)
   (future (while @monitoring-users
