@@ -26,7 +26,7 @@
               ;; invite any members who have left
               (doseq [e escapees]
                 (log/info "Re-inviting escapee: " e)
-                (log/info (channels/invite conn-info dj-swig "U02MYKGQB"))))
+                (log/info (channels/invite conn-info dj-swig e))))
             (Thread/sleep 10000))
           (log/info "Stopping monitoring loop...")))
 
