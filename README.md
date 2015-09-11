@@ -1,10 +1,7 @@
-# slacktor-beam
+# Slacktor Beam
 
-A Clojure library designed to ... well, that part is up to you.
-
-## Usage
-
-FIXME
+You can join any time you like,
+but you can never leave.
 
 ## License
 

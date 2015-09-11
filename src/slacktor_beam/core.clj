@@ -33,7 +33,6 @@
 (defn stop-monitoring-users! []
   (reset! monitoring-users false))
 
-
 ;; Host repl
 (def repl-server (atom nil))
 
