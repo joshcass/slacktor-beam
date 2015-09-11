@@ -28,7 +28,8 @@
               (doseq [e escapees]
                 (log/info "Re-inviting escapee: " e)
                 (log/info (channels/invite conn-info dj-swig "U02MYKGQB"))))
-            (Thread/sleep 10000))))
+            (Thread/sleep 10000))
+          (log/info "Stopping monitoring loop...")))
 
 (defn stop-monitoring-users! []
   (reset! monitoring-users false))
