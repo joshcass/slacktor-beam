@@ -7,9 +7,17 @@
            [clojure.tools.nrepl.server :as repl]
            [clojure.set :refer [difference]]))
 
-(def token (System/getenv "SLACK_OAUTH_TOKEN"))
+(def token (System/getenv "SLACK_ADMIN_TOKEN"))
 (def conn-info {:api-url "https://slack.com/api" :token token})
-(def dj-swig "C06BTMB4N")
+
+(defn channels-list []
+  (:channels (channels/list conn-info)))
+
+(defonce dj-swig
+  (->> (channels-list)
+       (filter #(= "dj_swig" (:name %)))
+       (first)
+       (:id)))
 
 (def members (atom #{}))
 (def monitoring-users (atom false))
