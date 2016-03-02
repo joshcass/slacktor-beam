@@ -7,7 +7,7 @@
            [clojure.tools.nrepl.server :as repl]
            [clojure.set :refer [difference]]))
 
-(def token (System/getenv "SLACK_ADMIN_TOKEN"))
+(def token (System/getenv "SLACK_OAUTH_TOKEN"))
 (def conn-info {:api-url "https://slack.com/api" :token token})
 
 (defn channels-list []
