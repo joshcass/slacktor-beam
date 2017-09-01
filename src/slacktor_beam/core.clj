@@ -15,7 +15,7 @@
 
 (defonce dj-swig
   (->> (channels-list)
-       (filter #(= "achievement-bonusly" (:name %)))
+       (filter #(= "dank-hour" (:name %)))
        (first)
        (:id)))
 
