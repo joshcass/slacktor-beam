@@ -15,7 +15,7 @@
 
 (defonce dj-swig
   (->> (channels-list)
-       (filter #(= "dank-hour" (:name %)))
+       (filter #(= "roberto" (:name %)))
        (first)
        (:id)))
 
