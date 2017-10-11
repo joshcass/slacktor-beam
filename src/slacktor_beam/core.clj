@@ -9,18 +9,22 @@
 
 (def token (System/getenv "SLACK_OAUTH_TOKEN"))
 (def conn-info {:api-url "https://slack.com/api" :token token})
+(def robert "U1JGQ6Z3J")
 
 (defn channels-list []
   (:channels (channels/list conn-info)))
 
 (defonce dj-swig
   (->> (channels-list)
-       (filter #(= "roberto" (:name %)))
+       (filter #(= "achievement-bonusly" (:name %)))
        (first)
        (:id)))
 
 (def members (atom #{}))
 (def monitoring-users (atom false))
+
+(defn invite-if-robert [string]
+  (when (= string robert) (log/info (channels/invite conn-info dj-swig robert))))
 
 (defn monitor-users! []
   (reset! monitoring-users true)
@@ -33,8 +37,8 @@
               (swap! members into current)
               ;; invite any members who have left
               (doseq [e escapees]
-                (log/info "Re-inviting escapee: " e)
-                (log/info (channels/invite conn-info dj-swig e))))
+                (log/info "Testing if escapee is robert: " e)
+                (invite-if-robert e)))
             (Thread/sleep 10000))
           (log/info "Stopping monitoring loop...")))
 
